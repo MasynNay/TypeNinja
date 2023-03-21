@@ -2,7 +2,7 @@ const User = require("./User");
 const Scores = require("./Scores");
 const Dictionary = require("./Dictionary");
 
-User.hasmany(Scores, {
+User.hasMany(Scores, {
   foreignKey: "user_id",
   onDelete: "CASCADE"
 });

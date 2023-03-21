@@ -1,1 +1,1 @@
-# user-friendly
+# type-ninja

@@ -21,7 +21,7 @@ const seedDatabase = async () => {
   }
 
   for (const words of dictionaryData) {
-    await Dictionary.Create({
+    await Dictionary.create({
       ...words
     });
   }

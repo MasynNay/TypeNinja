@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
+
+:root{
+    --bgColor: #3b4545;
+    --textPrimary: white;
+    --textSecondary: #008080;
+    --primaryColor: #008080;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color:var(--bgColor);
+    color: var(--textPrimary);
+    font-size: 1.4rem;
+}
+main{
+    width: 700px;
+    margin: 50px auto;
+}
+h1{
+    color: var(--primaryColor);
+    text-align: center;
+}
+h1 svg{
+    width: 40px;
+    fill: var(--primaryColor);
+}
+#header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px 6px 30px;
+}
+#buttons{
+    text-align: right;
+}
+#info{
+    color: var(--primaryColor);
+    font-weight: bold;
+    font-size: xx-large;
+}
+button{
+    background: #004545;
+    border:1;
+    border-color: #008080;
+    color: #008080;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+div#game{
+    line-height:35px;
+    height:105px;
+    overflow: hidden;
+    position: relative;
+}
+div#game:focus{
+    outline:0;
+}
+#words{
+    filter: blur(5px);
+    color: var(--textSecondary);
+}
+#game:focus #words{
+    filter: blur(0);
+}
+#focus-error {
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    padding-top: 35px;
+}
+#game:focus #focus-error{
+    display:none;
+}
+div.word{
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0 5px;
+}
+.letter.correct{
+    color: #fff;
+}
+.letter.incorrect{
+    color: #f55;
+}
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+#cursor{
+    display:none;
+    width: 2px;
+    height: 1.6rem;
+    background: var(--primaryColor);
+    position: fixed;
+    top: 198px;
+    left: 120px;
+    animation: blink .3s infinite;
+}
+#game:focus #cursor{
+    display: block;
+}
+#game.over #words{
+    opacity: .5;
+    filter: blur(0px);
+}
+#game.over:focus #cursor{
+    display:none;
+}
+#game.over #focus-error {
+    display: none;
+}
+.box{ 
+    background-color: #004545;
+    text-align: center;
+    width: 750px;
+    height: auto;
+    border: 3px solid #008080;
+    border-radius: 10px;
+    margin: 50px auto;
+    }

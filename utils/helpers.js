@@ -1,6 +1,5 @@
 module.exports = {
   format_date: (date) => {
-
     // Format date as MM/DD/YYYY
     return date.toLocaleDateString();
   },
@@ -20,8 +19,4 @@ module.exports = {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
   },
-
-    return date.toLocaleDateString();
-  }
-
 };

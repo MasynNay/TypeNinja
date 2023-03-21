@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { User, Blog, Comment } = require('../models');
+const { User, Dictionary, Scores } = require('../models');
 const session = require('express-session');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const blogData = await Blog.findAll()
-    const blog = blogData.map((blog) => blog.get({ plain: true }));
+    const DictionaryData = await Dictionary.findAll()
+    const Dictionary = DictionaryData.map((Dictionary) => Dictionary.get({ plain: true }));
     res.render('homepage', { 
-      blog, 
+      Dictionary, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -16,9 +16,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/blog/:id', async (req, res) => {
+router.get('/Dictionary/:id', async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    const DictionaryData = await Dictionary.findByPk(req.params.id, {
       include: [
         {
           model: User, include: {
@@ -26,16 +26,16 @@ router.get('/blog/:id', async (req, res) => {
           }
         },
         {
-          model: Comment, include: {
+          model: Scores, include: {
             model: User, 
             attributes: ['id', 'username'],
           }
         }
       ],
     });
-    const blog = blogData.get({ plain: true });
-    res.render('blog', {
-      ...blog,
+    const Dictionary = DictionaryData.get({ plain: true });
+    res.render('Dictionary', {
+      ...Dictionary,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -47,7 +47,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
+      include: [{ model: Dictionary }],
     });
     const user = userData.get({ plain: true });
     res.render('dashboard', {

@@ -16,22 +16,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/Dictionary/:id', async (req, res) => {
+router.get('/dictionary', async (req, res) => {
   try {
     const DictionaryData = await Dictionary.findByPk(req.params.id, {
-      include: [
-        {
-          model: User, include: {
-            attributes: ['id', 'username'],
-          }
-        },
-        {
-          model: Scores, include: {
-            model: User, 
-            attributes: ['id', 'username'],
-          }
-        }
-      ],
     });
     const Dictionary = DictionaryData.get({ plain: true });
     res.render('Dictionary', {
@@ -43,15 +30,15 @@ router.get('/Dictionary/:id', async (req, res) => {
   }
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/scores', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
+    const scoreData = await Scores.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Dictionary }],
+      include: [{ model: Scores }],
     });
-    const user = userData.get({ plain: true });
-    res.render('dashboard', {
-      ...user,
+    const Score = scoreData.get({ plain: true });
+    res.render('scores', {
+      ...Score,
       logged_in: true
     });
   } catch (err) {
@@ -61,7 +48,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/main');
     return;
   }
 
@@ -70,7 +57,7 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/main');
     return;
   }
   res.render('signup');

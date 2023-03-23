@@ -3,7 +3,7 @@ const { User, Dictionary, Scores } = require('../models');
 const session = require('express-session');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+/*router.get('/', async (req, res) => {
   try {
     const DictionaryData = await Dictionary.findAll()
     const Dictionary = DictionaryData.map((Dictionary) => Dictionary.get({ plain: true }));
@@ -14,6 +14,17 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});*/
+
+router.get('/', async (req, res) => {
+  //const DictionaryData = await Dictionary.findAll()
+  //const Dictionary = DictionaryData.map((Dictionary) => Dictionary.get({ plain: true }));
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+  res.render('homepage');
+ 
 });
 
 router.get('/Dictionary/:id', async (req, res) => {

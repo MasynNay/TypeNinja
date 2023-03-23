@@ -21,14 +21,16 @@
         {{else}}
         <a href="/login">login</a>
         {{/if}}
-      </nav>     
- 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+      </nav> 
+
       <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
-    </main>
+    </main>    
+ 
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+      
   <script src="/js/logout.js"></script>
   <script src="./public/js/script.js"></script>
   {{/if}}

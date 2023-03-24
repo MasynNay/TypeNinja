@@ -13,28 +13,26 @@
     <h1>
       TypeNinja
     </h1>
-      <nav>
+        <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/logout">logout</a>
+        <p>{{req.session.logged_in}}</p>
         {{else}}
         <a href="/login">login</a>
+         
         {{/if}}
       </nav> 
 
       <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
-    </main>    
- 
+    </main>     
+
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-      
   <script src="/js/logout.js"></script>
-  
   {{/if}}
-
 </body>
 
 </html>

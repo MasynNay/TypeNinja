@@ -5,30 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fund My Project!</title>
+  <link rel="stylesheet" href="/css/jass.css">
    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <main>
+    <div class="flex-column justify-space-around"></div>
+     <header class="display-flex justify-space-between align-center p-2"></header>
     <h1>
       TypeNinja
     </h1>
-        <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/logout">logout</a>
-        <p>{{req.session.logged_in}}</p>
-        {{else}}
-        <a href="/login">login</a>
-         
-        {{/if}}
-      </nav> 
 
+ </header>
       <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>     
-
+</div>
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <button id="logout">logout</button>|
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>

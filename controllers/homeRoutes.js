@@ -21,10 +21,15 @@ router.get('/', async (req, res) => {
   //const DictionaryData = await Dictionary.findAll()
   //const Dictionary = DictionaryData.map((Dictionary) => Dictionary.get({ plain: true }));
   if (req.session.logged_in) {
-    res.render('game');
+    res.render('game', {
+      logged_in: req.session.logged_in 
+    });
+    
     return;
   }
-  res.render('homepage');
+  res.render('homepage', {
+    logged_in: req.session.logged_in 
+  });
  
 });
 

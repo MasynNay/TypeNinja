@@ -4,6 +4,23 @@ const session = require('express-session');
 const withAuth = require('../utils/auth');
 
 
+router.get('/', async (req, res) => {
+
+  if (req.session.logged_in) {
+    res.render('game', {
+      logged_in: req.session.logged_in 
+    });
+    
+    return;
+  }
+  res.render('homepage', {
+    logged_in: req.session.logged_in 
+  });
+ 
+});
+
+
+
 router.get('/scores', withAuth, async (req, res) => {
   try {
     if (req.session.logged_in) {
@@ -11,9 +28,6 @@ router.get('/scores', withAuth, async (req, res) => {
         logged_in: req.session.logged_in 
       });
     }
-    return res.render('scores', {
-      logged_in: req.session.logged_in 
-    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Scores,
-          attributes: ['score'],
+          attributes: ['user_id', 'score'],
         },
       ],
     });

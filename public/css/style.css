@@ -137,10 +137,10 @@ div.word{
 #cursor{
     display:none;
     width: 2px;
-    height: 1.6rem;
+    height: 1.5rem;
     background: var(--bgColor);
     position: fixed;
-    animation: blink .4s infinite;
+    animation: blink .8s infinite;
 }
 
 #game:focus #cursor{

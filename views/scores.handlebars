@@ -15,3 +15,10 @@
         <h2 class="player_title"></h2><div class="score"></div>
     </div>
 </div>
+<div id="scoreboard">
+    <ul class="player">
+        {{#each player}}
+        <li class="player_title">{{this}}</li><div class="score"></div>
+        {{/each}}
+    </ul>
+</div>

@@ -1,8 +1,37 @@
+/*gk comment out code 3/28/23
 document.getElementById('score').addEventListener('click', () => {
   gameOver();
   document.location.replace("/scores");
 });
+*/
 
+//gk add code 3/28/23 to save score
+
+const newScore = async (event) => {
+  event.preventDefault();
+
+  const score = parseInt(document.querySelector('#info').innerHTML);
+
+
+  if (score) {
+    const response = await fetch(`/api/scores`, {
+      method: 'POST',
+      body: JSON.stringify({ score }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/game');
+    } else {
+      alert('Failed to save score');
+    }
+  }
+};
+document
+  .querySelector('#saveScoreBtn')
+  .addEventListener('click', newScore);
 
 // // high scores list------- change to save it to the data base rather than to local storage. 
 // const NO_OF_HIGH_SCORES = 5;

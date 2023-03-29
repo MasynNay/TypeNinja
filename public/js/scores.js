@@ -5,13 +5,14 @@ document.getElementById('score').addEventListener('click', () => {
 });
 */
 
-//gk add code 3/28/23 to save score
+//gk add code 3/29/23 to save score
 
 const newScore = async (event) => {
   event.preventDefault();
 
-  const score = parseInt(document.querySelector('#info').innerHTML);
-
+  const strScore = document.querySelector('#info').innerHTML;
+  const score=strScore.substring(strScore.indexOf(":") + 1);
+ 
 
   if (score) {
     const response = await fetch(`/api/scores`, {
@@ -22,8 +23,11 @@ const newScore = async (event) => {
       },
     });
 
+
+    
     if (response.ok) {
-      document.location.replace('/game');
+      alert('Score saved successfully!')
+      document.location.replace('/');
     } else {
       alert('Failed to save score');
     }
@@ -32,6 +36,8 @@ const newScore = async (event) => {
 document
   .querySelector('#saveScoreBtn')
   .addEventListener('click', newScore);
+
+
 
 // // high scores list------- change to save it to the data base rather than to local storage. 
 // const NO_OF_HIGH_SCORES = 5;

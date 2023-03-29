@@ -19,6 +19,32 @@ router.get('/', async (req, res) => {
  
 });
 
+//GK ADDED 3/28/2023 to retrive list of scores
+router.get('/scores', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const scoreData = await Scores.findAll({
+      order: [
+        ['score', 'DESC']
+      ],
+  });
+
+    // Serialize data so the template can read it
+    const scores = scoreData.map((scores) => scores.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('scores', { 
+      scores, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+/*code that existed before gk changes 3/28/2023
 
 
 router.get('/scores', withAuth, async (req, res) => {
@@ -32,7 +58,7 @@ router.get('/scores', withAuth, async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
-});
+});*/
 
     // const scoreData = await Scores.findByPk(req.session.user_id,
     //    {

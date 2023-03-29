@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
-
-/* color ideas
- background-color: #0cbaba;
-background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
- */
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 :root{
-    --bgColor: #b3bcc6;
+    --bgColor: #4e6277;
     --textPrimary: white;
-    --textSecondary: #4e6277;
-    --primaryColor: #4e6277;
+    --textSecondary: white;
+    --primaryColor: #b3bcc6;
+}
+a {
+    text-decoration: none;
 }
 
 body{
@@ -25,10 +24,23 @@ main{
 }
 
 h1{
+    font-size: 2em;
+    font-family: 'Kaushan Script', cursive;
     color: var(--primaryColor);
     text-align: center;
 }
 
+h2{
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+    font-size: xx-large;
+}
+
+p{
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+    font-size: x-large;
+}
 #header{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -46,25 +58,27 @@ h1{
 }
 
 button{
-    font-family: 'Roboto', 'sans-serif';
-    background: #004545;
-    border:1;
-    border-color: #008080;
+    font-family: 'Kaushan Script', cursive;
+    background: #b3bcc6;
+    border: 4px solid;
+    border-color: #8c9b80;
     color: white;
-    padding: 5px 20px;
+    padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: medium;
 }
 
 div#game{
+    margin: 5px;
     padding: .5em;
-    border: 4px solid #008080;
+    border: 4px solid #8c9b80;
     border-radius: 10px;
     background-color: #b3bcc6;
-    line-height:35px;
-    height:180px;
-    overflow: hidden;
+    line-height: 40px;
+    height: 200px;
     position: relative;
+    overflow: hidden;
 }
 
 div#game:focus{
@@ -72,20 +86,25 @@ div#game:focus{
 }
 
 #words{
+    position: absolute;
     filter: blur(5px);
     color: var(--textSecondary);
+    overflow: hidden;
 }
 
 #game:focus #words{
     filter: blur(0);
 }
 
+
 #focus-error {
-    color: black;
+    font-size: 2em;
+    font-family: 'Kaushan Script', cursive;
+    color: #302558;
     position: absolute;
     inset: 0;
     text-align: center;
-    padding-top: 2.5em;
+    padding-top: 2em;
 }
 
 #game:focus #focus-error{
@@ -99,7 +118,7 @@ div.word{
 }
 
 .letter.correct{
-    color: #696969;
+    color: #8c9b80;
 }
 
 .letter.incorrect{
@@ -121,12 +140,10 @@ div.word{
 #cursor{
     display:none;
     width: 2px;
-    height: 1.6rem;
-    background: var(--primaryColor);
+    height: 1.5rem;
+    background: var(--bgColor);
     position: fixed;
-    top: 198px;
-    left: 120px;
-    animation: blink .3s infinite;
+    animation: blink .8s infinite;
 }
 
 #game:focus #cursor{
@@ -146,37 +163,41 @@ div.word{
     display: none;
 }
 
+.logout {
+    font-family: 'Roboto', 'sans-serif';
+    background: #004545;
+    border:1;
+    border-color: #008080;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 .box{ 
-    background-color: #004545;
+    background-color: #b3bcc6;
+    text-align: center;
+    height: auto;
+    border: 4px solid #8c9b80;
+    border-radius: 10px;
+    margin: 15px auto;
+}
+
+.box2{
+    background-color: #4e6277;
     text-align: center;
     width: 750px;
     height: auto;
-    border: 3px solid #008080;
+    border: 4px solid #8c9b80;
     border-radius: 10px;
-    margin: 50px auto;
-    }
-    header, .project:not(:last-child) {
-        border-bottom: 1px solid #ccc;
-      }
-      
-      .no-button {
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        color: #1b89bc;
-        text-decoration: none;
-        font-size: 100%;
-      }
-      
-      .no-button:hover {
-        color: #065b83;
-        text-decoration: underline;
-      }
-      
-      .dollar-amount {
-        color: #056605;
-        font-weight: bold;
-        margin-left: -5px;
-      }
-      
+    margin: 25px auto;
+}
+
+a {
+    color: var(--textSecondary);
+}
+
+.score, .form-group, .form-input, .name-signup {
+    font-family: 'Kaushan Script', cursive;
+}

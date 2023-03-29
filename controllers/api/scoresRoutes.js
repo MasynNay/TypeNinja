@@ -2,6 +2,17 @@ const router = require('express').Router();
 const { Scores } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+/* GK MOVED THE "GET" CODE FOR SCORES TO homeroutes.js file
+router.get('/', async (req, res) => {
+  try {
+    const scoresData = await Scores.findAll();
+    res.status(200).json(scoresData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});*/
+
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newScore = await Scores.create({
@@ -14,28 +25,5 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-
-router.put('/:id', withAuth, async (req, res) => {
-  try {
-    const scoreData = await Blog.update(
-      {
-        ...req.body,
-        user_id: req.session.user_id,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
-    if (!scoreData) {
-      res.status(404).json({ message: 'No blog found with this id!' });
-      return;
-    }
-    res.status(200).json(scoreData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 module.exports = router;

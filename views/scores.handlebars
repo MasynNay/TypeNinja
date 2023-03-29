@@ -1,3 +1,20 @@
+<!--<div id="highScores">
+    <div class="player">
+        <h2 class="player_title"></h2><div class="score"></div>
+    </div>
+    <div class="player">
+        <h2 class="player_title"></h2><div class="score"></div>
+    </div>
+    <div class="player">
+        <h2 class="player_title"></h2><div class="score"></div>
+    </div>
+    <div class="player">
+        <h2 class="player_title"></h2><div class="score"></div>
+    </div>
+    <div class="player">
+        <h2 class="player_title"></h2><div class="score"></div>
+    </div>
+</div>
 <div id="scoreboard">
     <ul class="player">
         {{#each player}}
@@ -5,3 +22,22 @@
         {{/each}}
     </ul>
 </div>
+
+<script src = "./js/scores.js"></script>-->
+
+<!-- Loop over each score in the projects array -->
+
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Score</th>
+    </tr>
+    {{#each scores as |score| }}
+   <tr>
+    
+    <td>{{score.user_id}}</td>
+    <td>{{score.score}}</td>
+
+   </tr>
+       {{/each}} 
+  </table>

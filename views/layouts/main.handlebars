@@ -4,38 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-   <link rel="stylesheet" href="/css/style.css">
+  <title>TypeNinja</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <main>
-    <div class="flex-column justify-space-around"></div>
-     <header class="display-flex justify-space-between align-center p-2"></header>
-    <h1>
-      TypeNinja
+    <a href="/">
+    <h1>TypeNinja
+      <img src="/images/TypeNinja.png" alt="TypeNinja" width="175" height="175">
     </h1>
-
- </header>
-      <main class="container container-fluid mt-5">
+    </a>
+      
+{{#if logged_in}}
+      <button class="button" id="logout">Logout</button>
+      {{else}}
+      <button><a href="/login">Login</a></button>
+      {{/if}}
+    </header>
+    <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
-    </main>     
-</div>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <button id="logout">logout</button>|
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    </main>
+    </div>
+    <nav>
+      <!-- Conditionally render login or logout links -->
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+    
 </body>
 
 </html>

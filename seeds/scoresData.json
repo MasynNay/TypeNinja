@@ -1,11 +1,14 @@
 [
   {
+    "user_id": 1,
     "score": 60
   },
   {
+    "user_id": 2,
     "score": 34
   },
   {
+    "user_id": 3,
     "score": 99
   }
 ]

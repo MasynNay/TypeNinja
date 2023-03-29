@@ -7,6 +7,9 @@
     --textSecondary: white;
     --primaryColor: #b3bcc6;
 }
+a {
+    text-decoration: none;
+}
 
 body{
     font-family: 'Roboto', sans-serif;
@@ -195,18 +198,6 @@ a {
     color: var(--textSecondary);
 }
 
-.score {
-    font-family: 'Kaushan Script', cursive;
-}
-
-.form-group {
-    font-family: 'Kaushan Script', cursive;
-}
-
-.form-input {
-    font-family: 'Kaushan Script', cursive;
-}
-
-.name-signup {
+.score, .form-group, .form-input, .name-signup {
     font-family: 'Kaushan Script', cursive;
 }

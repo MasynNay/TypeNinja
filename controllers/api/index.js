@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const scoresRoutes = require('./scoresRoutes');
-const dictionaryRoutes = require('./dictionaryRoutes');
+const randomWordsRoute = require('./randomWordsRoute');
 
 router.use('/users', userRoutes);
 router.use('/scores', scoresRoutes);
-router.use('/dictionary', dictionaryRoutes);
+router.use('/randomWordsRoute', randomWordsRoute);
 
 module.exports = router;

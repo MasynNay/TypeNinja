@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { User, Dictionary, Scores } = require('../models');
-const session = require('express-session');
+const { Scores } = require('../models');
 const withAuth = require('../utils/auth');
 
 

@@ -7,11 +7,22 @@ A game where developers can practice their typing accuracy and speed with words 
 
 ## Table of Contents
 
+ * [Contributors](#contributors)
  * [User Story](#user-story)
  * [Acceptance Criteria](#acceptance-criteria)
  * [Installation](#installation)
  * [Application Demonstration](#application-demonstration)
  * [Live Application](#live-application)
+
+
+## Contributors
+
+- [Brandt C.](https://github.com/MrBrandtCox)
+- [Charlie G.](https://github.com/CharlieGarvin)
+- [Devon E.](https://github.com/Mersopolis)
+- [Greg K.](https://github.com/greg4949)
+- [Masyn N.](https://github.com/MasynNay)
+
 
 ## User Story
 
@@ -62,6 +73,11 @@ type "npm start" to start the database
 
 ## Application Demonstration
 
-![](./assets/images/demo.png)
+![](./public/images/demo1.png)
+![](./public/images/demo2.png)
+![](./public/images/demo3.png)
+![](./public/images/demo4.png)
 
 ## Live Application
+
+https://typeninja.herokuapp.com

@@ -1,8 +1,8 @@
-# Tech Blog
+# TypeNinja
 
-## Module-14 Model-View-Controller:
+## Group Project 2:
 ```md
-A blog where developers can publish their blog posts and comment on other developers' posts. Uses Handlebars.js, Sequelize and express-session npm package for authentication.
+A game where developers can practice their typing accuracy and speed with words that are all generated at random.
 ```
 
 ## Table of Contents
@@ -17,7 +17,7 @@ A blog where developers can publish their blog posts and comment on other develo
 
 ```md
 AS A developer who is constantly typing on a keyboard
-I WANT a game that improve my typing speed and accuracy
+I WANT a game that improves my typing speed and accuracy
 SO THAT I can write code at a faster pace and not type as many mistakes
 ```
 

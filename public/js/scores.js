@@ -24,7 +24,7 @@ const newScore = async (event) => {
     });
 
 
-    
+
     if (response.ok) {
       alert('Score saved successfully!')
       document.location.replace('/');
@@ -33,9 +33,13 @@ const newScore = async (event) => {
     }
   }
 };
+
+
 document
   .querySelector('#saveScoreBtn')
   .addEventListener('click', newScore);
+
+
 
 
 

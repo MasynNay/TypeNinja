@@ -1,15 +1,28 @@
-const randomWords = async () => {
-  const response = await fetch('/api/randomWordsRoute', {
-    method: 'GET',
-    headers: { 'Content-Type': 'text/plain' },
-  });
+let rawWords = ``;
 
-  if (response.ok) {
-    return await response.text().split(" ");
-  }
-  else {
-    alert(response.statusText);
-  }
+const randomWords = async () => {
+  fetch('/api/randomWordsRoute', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response =>
+    response.text().then(data => ({
+      data: data,
+      status: response.status
+    })
+  ).then(res => {
+    console.log(res.data);
+    rawWords = res.data;
+    newGame();
+    return res.data;
+  }));
+
+  /*  if (response.ok) {
+      console.log(response.text());
+      return response.text();
+    }
+    else {
+      alert(response.statusText);
+    }*/
 };
 
 const gameTime = 30 * 1000;
@@ -17,22 +30,27 @@ window.timer = null;
 window.gameStart = null;
 window.pauseTime = 0;
 
-function addClass(el,name) {
-  el.className += ' '+name;
+function addClass(el, name) {
+  el.className += ' ' + name;
 }
-function removeClass(el,name) {
-  el.className = el.className.replace(name,'');
+function removeClass(el, name) {
+  el.className = el.className.replace(name, '');
 }
 
-function formatWord(words) {
-  return `<div class="word"><span class="letter">${word.split('').join('</span><span class="letter">')}</span></div>`;
+function formatWords() {
+  let wordsToFormat = rawWords.split(" ");
+  console.log(wordsToFormat);
+  let formattedWords = ``;
+  for (let i = 0; i < wordsToFormat.length; i++) {
+    formattedWords += `<div class="word"><span class="letter">${wordsToFormat[i]}</span></div>`;
+  }
+  console.log(formattedWords);
+  return formattedWords;
 }
 
 function newGame() {
   document.getElementById('words').innerHTML = '';
-  for (let i = 0; i < randomWords.length; i++) {
-    document.getElementById('words').innerHTML += formatWord(randomWords[i]);
-  }
+  document.getElementById('words').innerHTML += formatWords();
   addClass(document.querySelector('.word'), 'current');
   addClass(document.querySelector('.letter'), 'current');
   document.getElementById('info').innerHTML = (gameTime / 1000) + '';
@@ -51,7 +69,7 @@ function getWpm() {
     return incorrectLetters.length === 0 && correctLetters.length === letters.length;
   });
   return correctWords.length / gameTime * 60000;
-}cursor
+} cursor
 
 function gameOver() {
   clearInterval(window.timer);
@@ -70,13 +88,13 @@ document.getElementById('game').addEventListener('keyup', ev => {
   const isBackspace = key === 'Backspace';
   const isFirstLetter = currentLetter === currentWord.firstChild;
   const isExtra = document.querySelector(".letter.incorrect.extra");
-  
+
   if (document.querySelector('#game.over')) {
     return;
   }
- 
 
-  console.log({key,expected});
+
+  console.log({ key, expected });
 
   if (!window.timer && isLetter) {
     window.timer = setInterval(() => {
@@ -172,5 +190,4 @@ document.getElementById('newGameBtn').addEventListener('click', () => {
   window.location.reload();
 });
 
-
-newGame();
+randomWords();

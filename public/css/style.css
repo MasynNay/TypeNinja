@@ -41,6 +41,14 @@ p{
     text-align: center;
     font-size: x-large;
 }
+
+table, th, td {
+    border: 1px solid;
+    text-align: center;
+    font-family:  'Kaushan Script', cursive;
+    width: 50%;
+
+  }
 #header{
     display: grid;
     grid-template-columns: 1fr 1fr;

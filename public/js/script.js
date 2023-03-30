@@ -10,19 +10,10 @@ const randomWords = async () => {
       status: response.status
     })
   ).then(res => {
-    console.log(res.data);
     rawWords = res.data;
     newGame();
     return res.data;
   }));
-
-  /*  if (response.ok) {
-      console.log(response.text());
-      return response.text();
-    }
-    else {
-      alert(response.statusText);
-    }*/
 };
 
 const gameTime = 30 * 1000;
@@ -39,12 +30,10 @@ function removeClass(el, name) {
 
 function formatWords() {
   let wordsToFormat = rawWords.split(" ");
-  console.log(wordsToFormat);
   let formattedWords = ``;
   for (let i = 0; i < wordsToFormat.length; i++) {
-    formattedWords += `<div class="word"><span class="letter">${wordsToFormat[i]}</span></div>`;
+    formattedWords += `<div class="word"><span class="letter">${wordsToFormat[i].split("").join(`</span><span class="letter">`)}</span></div>`;
   }
-  console.log(formattedWords);
   return formattedWords;
 }
 
@@ -83,6 +72,7 @@ document.getElementById('game').addEventListener('keyup', ev => {
   const currentWord = document.querySelector('.word.current');
   const currentLetter = document.querySelector('.letter.current');
   const expected = currentLetter?.innerHTML || ' ';
+  console.log (document.querySelector('.letter.current'));
   const isLetter = key.length === 1 && key !== ' ';
   const isSpace = key === ' ';
   const isBackspace = key === 'Backspace';
